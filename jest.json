@@ -1,0 +1,28 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": "./src",
+  "modulePaths": [
+    "<rootDir>/../"
+  ],
+  "coverageDirectory": "../coverage",
+  "coverageReporters": [
+    "clover",
+    "json",
+    "html",
+    [
+      "text",
+      {
+        "skipFull": true
+      }
+    ]
+  ],
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}
