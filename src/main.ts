@@ -1,13 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-import { MainModule } from './main.module';
 import { ConfigService } from '@nestjs/config';
+import { ApiModule } from './api/api.module';
 
 async function bootstrap() {
-  const main = await NestFactory.create(MainModule);
+  const main = await NestFactory.create(ApiModule);
 
   const config = main.get(ConfigService);
-  const api_port = config.get('port');
 
+  main.enableCors();
+
+  const api_port = config.get('api_port');
   await main.listen(api_port);
 }
+
 bootstrap();

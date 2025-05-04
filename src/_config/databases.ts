@@ -1,17 +1,17 @@
 import { DataSourceOptions } from 'typeorm';
-import * as path from 'path';
+import * as path from 'node:path';
 
-const quimera: DataSourceOptions = {
-  name: 'quimera',
+const vehve: DataSourceOptions = {
+  name: 'vehve',
   type: 'mariadb',
   host: process.env.MARIADB_HOST || 'localhost',
   port: parseInt(process.env.MARIADB_PORT, 10) || 3306,
-  username: process.env.MARIADB_USER || '',
-  password: process.env.MARIADB_PASSWORD || '',
-  database: process.env.MARIADB_DATABASE || '',
+  username: process.env.DB_VEHVE_USER || '',
+  password: process.env.DB_VEHVE_PASSWORD || '',
+  database: process.env.DB_VEHVE_DATABASE || '',
   entities: [
     [
-      path.join(__dirname, `../`, '/share/databases/quimera/entities'),
+      path.join(__dirname, `../`, '/shared/databases/vehve/entities'),
       '**/*.entity.js',
     ].join(`/`),
   ],
@@ -20,7 +20,7 @@ const quimera: DataSourceOptions = {
     path: path.join(
       __dirname,
       `../`,
-      '/share/databases/quimera/migrations',
+      '/shared/databases/vehve/migrations',
       '/*.js',
     ),
   },
@@ -28,6 +28,6 @@ const quimera: DataSourceOptions = {
 };
 
 export default {
-  db_default: 'quimera',
-  quimera,
+  db_default: 'vehve',
+  vehve,
 };
